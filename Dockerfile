@@ -3,11 +3,4 @@ FROM ollama/ollama
 # Set the working directory (optional)
 WORKDIR /app
 
-RUN ollama serve &
-RUN sleep 10 && ollama pull phi3
-
-# Expose the port the app runs on (optional)
-EXPOSE 11434
-
-# Command to run the application
-CMD ["ollama serve"]
+RUN ollama serve && curl http://localhost:11434/api/pull -d '{  "name": "llama3"}'
