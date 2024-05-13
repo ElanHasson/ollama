@@ -7,9 +7,7 @@ RUN apt-get update && \
 
 # Set the working directory (optional)
 WORKDIR /app
-RUN curl -fsSL https://ollama.com/install.sh | sh
-RUN ollama pull phi3
-RUN ollama pull llama3
+RUN (curl -fsSL https://ollama.com/install.sh | sh ) &&  ollama pull phi3 && ollama pull llama3
 # Expose the port the app runs on (optional)
 EXPOSE 11434
 
