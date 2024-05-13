@@ -1,10 +1,7 @@
 # Use the official Ubuntu base image
-FROM ollama:latest
+FROM ollama/ollama
 # Set the working directory (optional)
 WORKDIR /app
-
-ENV OLLAMA_HOST=0.0.0.0:11434
-ENV OLLAMA_MODELS=/app
 
 RUN ollama serve & ; sleep 10 && ollama pull phi3
 
