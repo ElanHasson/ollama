@@ -11,7 +11,8 @@ WORKDIR /app
 ENV OLLAMA_HOST=0.0.0.0:11434
 ENV OLLAMA_MODELS=/app
 
-RUN curl -fsSL https://ollama.com/install.sh | sh ; ollama serve & ; ollama pull phi3 ; ollama pull llama3
+RUN curl -fsSL https://ollama.com/install.sh | sh
+RUN ollama server -d && ollamapid=$! && sleep 60 && ollama pull phi3 && kill $ollamapid
 # Expose the port the app runs on (optional)
 EXPOSE 11434
 
